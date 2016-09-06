@@ -192,7 +192,12 @@
 			App.init();
 			LoginV2.init();
 		});
-        new Vue({
+        $('body').keydown(function(e){
+            if(e.which == 13){
+                vn.login();
+            }
+        });
+        var vn = new Vue({
             el: '#vueLogin',
             data: {
                 user:{_token:"{{csrf_token()}}"},

@@ -24,6 +24,7 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware'=>'web'],
         Route::get('/', 'AdminController@index')->name('admin.index');
         // 后台权限节点
         Route::get('permission/index', 'PermissionController@index')->name('permission.index');
+        Route::get('permission/create', 'PermissionController@create')->name('permission.create');
     });
 });
 

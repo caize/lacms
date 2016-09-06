@@ -1,377 +1,24 @@
-@extends('layouts.admin')
-@section('content')
+@extends('layouts.admin') @section('style')
+<style>
+    .input {
+        width: 500px;
+    }
+    
+    .bootstrap-select.form-control:not([class*="span"]) {
+        width: 500px;
+    }
+</style>
+@endsection @section('content')
 <div id="content" class="content">
     <!-- begin breadcrumb -->
     <ol class="breadcrumb pull-right">
-        <li><a href="javascript:;">Home</a></li>
-        <li><a href="javascript:;">Form Stuff</a></li>
-        <li class="active">Form Elements</li>
+        <li><a href="javascript:;">权限管理</a></li>
+        <li><a href="javascript:;">权限列表</a></li>
+        <li class="active">权限添加</li>
     </ol>
     <!-- end breadcrumb -->
     <!-- begin page-header -->
-    <h1 class="page-header">Form Elements <small>header small text goes here...</small></h1>
-    <!-- end page-header -->
-    
-    <!-- begin row -->
-    <div class="row">
-        <!-- begin col-6 -->
-        <div class="col-md-6">
-            <!-- begin panel -->
-            <div class="panel panel-inverse" data-sortable-id="form-stuff-1">
-                <div class="panel-heading">
-                    <div class="panel-heading-btn">
-                        <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-default" data-click="panel-expand"><i class="fa fa-expand"></i></a>
-                        <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-success" data-click="panel-reload"><i class="fa fa-repeat"></i></a>
-                        <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-warning" data-click="panel-collapse"><i class="fa fa-minus"></i></a>
-                        <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-danger" data-click="panel-remove"><i class="fa fa-times"></i></a>
-                    </div>
-                    <h4 class="panel-title">Input Types</h4>
-                </div>
-                <div class="panel-body">
-                    <form class="form-horizontal">
-                        <div class="form-group">
-                            <label class="col-md-3 control-label">Default Input</label>
-                            <div class="col-md-9">
-                                <input type="text" class="form-control" placeholder="Default input" />
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="col-md-3 control-label">Disabled Input</label>
-                            <div class="col-md-9">
-                                <input type="text" class="form-control" placeholder="Disabled input" disabled />
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="col-md-3 control-label">Select</label>
-                            <div class="col-md-9">
-                                <select class="form-control">
-                                    <option>1</option>
-                                    <option>2</option>
-                                    <option>3</option>
-                                    <option>4</option>
-                                    <option>5</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="col-md-3 control-label">Select (multiple)</label>
-                            <div class="col-md-9">
-                                <select multiple class="form-control">
-                                    <option>1</option>
-                                    <option>2</option>
-                                    <option>3</option>
-                                    <option>4</option>
-                                    <option>5</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="col-md-3 control-label">Textarea</label>
-                            <div class="col-md-9">
-                                <textarea class="form-control" placeholder="Textarea" rows="5"></textarea>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="col-md-3 control-label">Checkbox</label>
-                            <div class="col-md-9">
-                                <div class="checkbox">
-                                    <label>
-                                        <input type="checkbox" value="" />
-                                        Checkbox Label 1
-                                    </label>
-                                </div>
-                                <div class="checkbox">
-                                    <label>
-                                        <input type="checkbox" value="" />
-                                        Checkbox Label 2
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="col-md-3 control-label">Inline Checkbox</label>
-                            <div class="col-md-9">
-                                <label class="checkbox-inline">
-                                    <input type="checkbox" value="" />
-                                    Checkbox Label 1
-                                </label>
-                                <label class="checkbox-inline">
-                                    <input type="checkbox" value="" />
-                                    Checkbox Label 2
-                                </label>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="col-md-3 control-label">Radio Button</label>
-                            <div class="col-md-9">
-                                <div class="radio">
-                                    <label>
-                                        <input type="radio" name="optionsRadios" value="option1" checked />
-                                        Radio option 1
-                                    </label>
-                                </div>
-                                <div class="radio">
-                                    <label>
-                                        <input type="radio" name="optionsRadios" value="option2" />
-                                        Radio option 2
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="col-md-3 control-label">Inline Radio Button</label>
-                            <div class="col-md-9">
-                                <label class="radio-inline">
-                                    <input type="radio" name="optionsRadios" value="option1" checked />
-                                    Radio option 1
-                                </label>
-                                <label class="radio-inline">
-                                    <input type="radio" name="optionsRadios" value="option2" />
-                                    Radio option 2
-                                </label>
-                            </div>
-                        </div>
-                        <div class="form-group has-success has-feedback">
-                            <label class="col-md-3 control-label">Input with Success</label>
-                            <div class="col-md-9">
-                                <input type="text" class="form-control" />
-                                <span class="fa fa-check form-control-feedback"></span>
-                            </div>
-                        </div>
-                        <div class="form-group has-warning has-feedback">
-                            <label class="col-md-3 control-label">Input with Warning</label>
-                            <div class="col-md-9">
-                                <input type="text" class="form-control" />
-                                <span class="fa fa-warning form-control-feedback"></span>
-                            </div>
-                        </div>
-                        <div class="form-group has-error has-feedback">
-                            <label class="col-md-3 control-label">Input with Error</label>
-                            <div class="col-md-9">
-                                <input type="text" class="form-control" />
-                                <span class="fa fa-times form-control-feedback"></span>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="col-md-3 control-label">Submit</label>
-                            <div class="col-md-9">
-                                <button type="submit" class="btn btn-sm btn-success">Submit Button</button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </div>
-            <!-- end panel -->
-        </div>
-        <!-- end col-6 -->
-        <!-- begin col-6 -->
-        <div class="col-md-6">
-            <!-- begin panel -->
-            <div class="panel panel-inverse" data-sortable-id="form-stuff-2">
-                <div class="panel-heading">
-                    <div class="panel-heading-btn">
-                        <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-default" data-click="panel-expand"><i class="fa fa-expand"></i></a>
-                        <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-success" data-click="panel-reload"><i class="fa fa-repeat"></i></a>
-                        <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-warning" data-click="panel-collapse"><i class="fa fa-minus"></i></a>
-                        <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-danger" data-click="panel-remove"><i class="fa fa-times"></i></a>
-                    </div>
-                    <h4 class="panel-title">Input Sizes, Input Group</h4>
-                </div>
-                <div class="panel-body">
-                    <h4 class="m-t-0">Input Sizing</h4>
-                    <input class="form-control input-lg" type="text" placeholder=".input-lg" />
-                    <p></p>
-                    <input class="form-control" type="text" placeholder="Default input" />
-                    <p></p>
-                    <input class="form-control input-sm" type="text" placeholder=".input-sm" />
-                    <p></p>
-                    <select class="form-control input-lg">
-                        <option>.input-lg</option>
-                    </select>
-                    <p></p>
-                    <select class="form-control">
-                        <option>default input</option>
-                    </select>
-                    <p></p>
-                    <select class="form-control input-sm">
-                        <option>.input-sm</option>
-                    </select>
-                    <h4 class="m-t-20">Input Group</h4>
-                    <div class="input-group">
-                        <span class="input-group-addon">@</span>
-                        <input type="text" class="form-control" placeholder="Username" />
-                    </div>
-                    <p></p>
-                    <div class="input-group">
-                        <input type="text" class="form-control" />
-                        <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
-                    </div>
-                    <p></p>
-                    <div class="input-group">
-                        <span class="input-group-addon">$</span>
-                        <input type="text" class="form-control" />
-                        <span class="input-group-addon">.00</span>
-                    </div>
-                    <p></p>
-                    <div class="input-group">
-                        <span class="input-group-addon">
-                            <input type="checkbox" />
-                        </span>
-                        <input type="text" class="form-control" placeholder="Checkbox add on" />
-                    </div>
-                    <p></p>
-                    <div class="input-group">
-                        <span class="input-group-addon">
-                            <input type="radio" />
-                        </span>
-                        <input type="text" class="form-control" placeholder="Radio button add on" />
-                    </div>
-                    <p></p>
-                    <div class="input-group">
-                        <div class="input-group-btn">
-                            <button type="button" class="btn btn-primary">Action</button>
-                            <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
-                                <span class="caret"></span>
-                            </button>
-                            <ul class="dropdown-menu">
-                                <li><a href="#">Action</a></li>
-                                <li><a href="#">Another action</a></li>
-                                <li><a href="#">Something else here</a></li>
-                                <li class="divider"></li>
-                                <li><a href="#">Separated link</a></li>
-                            </ul>
-                        </div>
-                        <input type="text" class="form-control" />
-                        <div class="input-group-btn">
-                            <ul class="dropdown-menu pull-right">
-                                <li><a href="#">Action</a></li>
-                                <li><a href="#">Another action</a></li>
-                                <li><a href="#">Something else here</a></li>
-                                <li class="divider"></li>
-                                <li><a href="#">Separated link</a></li>
-                            </ul>
-                            <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown">
-                                <span class="caret"></span>
-                            </button>
-                            <button type="button" class="btn btn-success">Action</button>
-                        </div>
-                    </div>
-                    <h4 class="m-t-20">Input Group Sizing</h4>
-                    <div class="input-group input-group-lg">
-                        <span class="input-group-addon">@</span>
-                        <input type="text" class="form-control" placeholder="Username" />
-                    </div>
-                    <p></p>
-                    <div class="input-group">
-                        <span class="input-group-addon">@</span>
-                        <input type="text" class="form-control" placeholder="Username" />
-                    </div>
-                    <p></p>
-                    <div class="input-group input-group-sm">
-                        <span class="input-group-addon">@</span>
-                        <input type="text" class="form-control" placeholder="Username" />
-                    </div>
-                </div>
-            </div>
-            <!-- end panel -->
-        </div>
-        <!-- end col-6 -->
-    </div>
-    <!-- end row -->
-    <!-- begin row -->
-    <div class="row">
-        <!-- begin col-6 -->
-        <div class="col-md-6">
-            <!-- begin panel -->
-            <div class="panel panel-inverse" data-sortable-id="form-stuff-3">
-                <div class="panel-heading">
-                    <div class="panel-heading-btn">
-                        <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-default" data-click="panel-expand"><i class="fa fa-expand"></i></a>
-                        <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-success" data-click="panel-reload"><i class="fa fa-repeat"></i></a>
-                        <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-warning" data-click="panel-collapse"><i class="fa fa-minus"></i></a>
-                        <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-danger" data-click="panel-remove"><i class="fa fa-times"></i></a>
-                    </div>
-                    <h4 class="panel-title">Default Style</h4>
-                </div>
-                <div class="panel-body">
-                    <form action="/" method="POST">
-                        <fieldset>
-                            <legend>Legend</legend>
-                            <div class="form-group">
-                                <label for="exampleInputEmail1">Email address</label>
-                                <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email" />
-                            </div>
-                            <div class="form-group">
-                                <label for="exampleInputPassword1">Password</label>
-                                <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" />
-                            </div>
-                            <div class="checkbox">
-                                <label>
-                                    <input type="checkbox" /> Check me out
-                                </label>
-                            </div>
-                            <button type="submit" class="btn btn-sm btn-primary m-r-5">Login</button>
-                            <button type="submit" class="btn btn-sm btn-default">Cancel</button>
-                        </fieldset>
-                    </form>
-                </div>
-            </div>
-            <!-- end panel -->
-        </div>
-        <!-- end col-6 -->
-        <!-- begin col-6 -->
-        <div class="col-md-6">
-            <!-- begin panel -->
-            <div class="panel panel-inverse" data-sortable-id="form-stuff-4">
-                <div class="panel-heading">
-                    <div class="panel-heading-btn">
-                        <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-default" data-click="panel-expand"><i class="fa fa-expand"></i></a>
-                        <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-success" data-click="panel-reload"><i class="fa fa-repeat"></i></a>
-                        <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-warning" data-click="panel-collapse"><i class="fa fa-minus"></i></a>
-                        <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-danger" data-click="panel-remove"><i class="fa fa-times"></i></a>
-                    </div>
-                    <h4 class="panel-title">Form Horizontal</h4>
-                </div>
-                <div class="panel-body">
-                    <form class="form-horizontal" action="/" method="POST">
-                        <fieldset>
-                            <legend>Legend</legend>
-                            <div class="form-group">
-                                <label class="col-md-4 control-label">Email address</label>
-                                <div class="col-md-8">
-                                    <input type="email" class="form-control" placeholder="Enter email" />
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label class="col-md-4 control-label">Password</label>
-                                <div class="col-md-8">
-                                    <input type="password" class="form-control" placeholder="Password" />
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <div class="col-md-8 col-md-offset-4">
-                                    <div class="checkbox">
-                                        <label>
-                                            <input type="checkbox" /> Check me out
-                                        </label>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <div class="col-md-8 col-md-offset-4">
-                                    <button type="submit" class="btn btn-sm btn-primary m-r-5">Login</button>
-                                    <button type="submit" class="btn btn-sm btn-default">Cancel</button>
-                                </div>
-                            </div>
-                        </fieldset>
-                    </form>
-                </div>
-            </div>
-            <!-- end panel -->
-        </div>
-        <!-- end col-6 -->
-    </div>
-    <!-- end row -->
+    <h1 class="page-header">权限管理<small>...</small></h1>
     <!-- begin row -->
     <div class="row">
         <!-- begin col-12 -->
@@ -385,24 +32,60 @@
                         <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-warning" data-click="panel-collapse"><i class="fa fa-minus"></i></a>
                         <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-danger" data-click="panel-remove"><i class="fa fa-times"></i></a>
                     </div>
-                    <h4 class="panel-title">Inline Form</h4>
+                    <h4 class="panel-title">权限添加</h4>
                 </div>
-                <div class="panel-body">
-                    <form class="form-inline" action="/" method="POST">
-                        <div class="form-group m-r-10">
-                            <input type="email" class="form-control" id="exampleInputEmail2" placeholder="Enter email" />
-                        </div>
-                        <div class="form-group m-r-10">
-                            <input type="password" class="form-control" id="exampleInputPassword2" placeholder="Password" />
-                        </div>
-                        <div class="checkbox m-r-10">
-                            <label>
-                                <input type="checkbox" /> Remember me
-                            </label>
-                        </div>
-                        <button type="submit" class="btn btn-sm btn-primary m-r-5">Sign in</button>
-                        <button type="submit" class="btn btn-sm btn-default">Register</button>
-                    </form>
+                <div class="panel-body" id="node">
+                    <validator name="nodeValidation">
+                        <form class="form-horizontal" novalidate method="POST">
+                            <fieldset>
+                                <legend></legend>
+                                <div class="form-group">
+                                    <label class="col-md-3 control-label ">上级权限:</label>
+                                    <div class="col-md-9">
+                                        <select class="form-control selectpicker input" v-model="p.parent_id" data-size="10" data-live-search="true" data-style="btn-white">
+                                        <option value="0" selected>顶级权限</option>
+                                    </select>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-md-3 control-label">权限别名:</label>
+                                    <div class="col-md-9">
+                                        <input type="text" v-model="p.name" name="name" v-validate:name="{ required: true}" class="form-control input" placeholder="权限别名,如(admin.permission.index)">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-md-3 control-label">权限名:</label>
+                                    <div class="col-md-9">
+                                        <input type="text" v-model="p.display_name" name="displayName" v-validate:displayName="{ required: true}" class="form-control input" placeholder="权限名">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-md-3 control-label" for="message">简要描述:</label>
+                                    <div class="col-md-9">
+                                        <textarea v-model="p.description" name="description" v-validate:description="{ required: true}" class="form-control input" id="message" name="message" rows="4" data-parsley-range="[20,200]"
+                                            placeholder="这里填写当前权限的简要描述"></textarea>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-md-3 control-label">权限排序:</label>
+                                    <div class="col-md-9">
+                                        <input type="text" v-model="p.sort" name="sort" v-validate:sort="{ required: true}" class="form-control input" placeholder="排序号">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-md-3 control-label">是否是菜单:</label>
+                                    <div class="col-md-9">
+                                        <input type="checkbox" v-model="p.is_menu"  data-render="switchery" data-theme="default"  />
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-md-9 col-md-offset-3">
+                                        <button @click="addNode()" :disabled="$nodeValidation.invalid" type="button" class="btn btn-success btn-lg m-r-5" style="width: 100px">保 存</button>
+                                    </div>
+                                </div>
+                            </fieldset>
+                        </form>
+                    </validator>
                 </div>
             </div>
             <!-- end panel -->
@@ -411,5 +94,23 @@
     </div>
     <!-- end row -->
 </div>
-@endsection
-
+@endsection @section('my-js')
+<script>
+	$(document).ready(function() {
+		App.init();
+        FormPlugins.init();
+        FormSliderSwitcher.init();
+	});
+    var vn = new Vue({
+        el: '#node',
+        data: {
+            p:{_token:"{{csrf_token()}}"},
+            msg:''
+        },
+        methods: {
+            addNode:function(){
+                console.log(this.p)
+            }
+        }
+    });
+</script> @endsection
