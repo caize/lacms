@@ -159,6 +159,9 @@ return [
         // 权限
         Zizaco\Entrust\EntrustServiceProvider::class,
 
+        // wangEditor for Laravel
+        Douyasi\WangEditor\EditorServiceProvider::class,
+
     ],
 
     /*

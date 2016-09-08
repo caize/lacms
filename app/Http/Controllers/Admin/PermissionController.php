@@ -12,7 +12,8 @@ class PermissionController extends BaseController
     */
     public function index()
     {
-        return view('admin.permission.index');
+        // return view('admin.permission.index');
+        dd(auth()->user()->toArray());
     }
     /**
     *  权限节点  添加

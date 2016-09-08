@@ -14,12 +14,12 @@ Route::get('/', function () {
 });
 // 后台路由组
 Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware'=>'web'], function () {
-    // 登录
-    Route::any('login', 'UserController@login')->name('admin.login');
-    // 注销
-    Route::get('logout', 'UserController@logout')->name('admin.logout');
-    // 已经登录
-    Route::group(['middleware' => ['check.admin.login']], function () {    
+    // // 登录
+    Route::any('login', 'AuthController@login')->name('admin.login');
+    // // 注销
+    Route::get('logout', 'AuthController@logout')->name('admin.logout');
+    // // 已经登录
+    Route::group(['middleware' => ['auth']], function () {    
         // 后台首页
         Route::get('/', 'AdminController@index')->name('admin.index');
         // 后台权限节点

@@ -3,17 +3,16 @@
 namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
-
-use App\Http\Requests;
-
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Auth;
 
-use App\Models\User;
 
-class UserController extends BaseController
-{
+use App\User;
+use App\Http\Controllers\Controller;
+
+class AuthController extends Controller
+{    
     /**
      * 登录
      * @param Request $request
@@ -22,7 +21,7 @@ class UserController extends BaseController
     public function login(Request $request)
     {
         // 已经登录则直接跳转
-        if (Session::has('user')) {
+        if (Auth::user()) {
             return redirect()->route('admin.index');
         }
         
@@ -45,20 +44,9 @@ class UserController extends BaseController
         if ($validator->fails()) {
             return $this->respondWithFailedValidation($validator);
         }
-        // 创建用户
-        // $input = $request->except(['_token']);
-        // $input['password'] = bcrypt($request->password);
-        // $res = User::create($input);
-        
-        $user = User::where('email', $request->email)->first();
-        if ($user && Hash::check($request->password, $user->password)) {
-            // 登录成功
-            if (Hash::needsRehash($user->password)) {
-                $user->password = bcrypt($request->password);
-                $user->save();
-            }
-            Session::put('user', $user);
-            return $this->respondWithSuccess($user, '登录成功');
+        if (Auth::guard('web')->attempt(['email' => $request->input('email'), 'password' => $request->input('password')])) {
+            // 认证通过...
+            return $this->respondWithSuccess(Auth::user()->toArray(), '登录成功');
         }
         return $this->respondWithErrors('账号或密码错误',400);
     }
@@ -68,7 +56,7 @@ class UserController extends BaseController
      */
     public function logout()
     {
-        Session::forget('user');
+        Auth::guard('web')->logout();
         return redirect()->route('admin.login');
     }
 }
