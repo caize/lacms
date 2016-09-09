@@ -2,8 +2,12 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Models\Permission;
+
+use Illuminate\Http\Request;
 use App\Http\Requests;
+
+use App\Models\Permission;
+use Cache;
 
 class PermissionController extends BaseController
 {
@@ -13,6 +17,8 @@ class PermissionController extends BaseController
     public function index()
     {
         // return view('admin.permission.index');
+        // Cache::forever(config('admin.globals.cache.menuList'),$menuList);
+        Cache::forever('user',auth()->user()->toArray());
         dd(auth()->user()->toArray());
     }
     /**

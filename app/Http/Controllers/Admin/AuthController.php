@@ -44,6 +44,11 @@ class AuthController extends Controller
         if ($validator->fails()) {
             return $this->respondWithFailedValidation($validator);
         }
+        // User::create([
+        //     'name' => 'admin',
+        //     'email' => $request->input('email'),
+        //     'password' => bcrypt($request->input('password')),
+        // ]);
         if (Auth::guard('web')->attempt(['email' => $request->input('email'), 'password' => $request->input('password')])) {
             // 认证通过...
             return $this->respondWithSuccess(Auth::user()->toArray(), '登录成功');

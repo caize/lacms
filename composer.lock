@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "025a1701c1c465d8b5fc069f8bd70bba",
-    "content-hash": "be3e38101619dfa45fe50373e92126f6",
+    "hash": "c3540933bba48fd4aecd8f0ac59eeb77",
+    "content-hash": "4a74c27d6a4f514de7f83886a0134c33",
     "packages": [
         {
             "name": "classpreloader/classpreloader",
@@ -160,52 +160,6 @@
                 "string"
             ],
             "time": "2015-11-06 14:35:42"
-        },
-        {
-            "name": "douyasi/laravel-wang-editor",
-            "version": "dev-master",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/douyasi/laravel-wang-editor.git",
-                "reference": "39c1327fa8c1ade3d0b3e3fca746ce5692c61ecd"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/douyasi/laravel-wang-editor/zipball/39c1327fa8c1ade3d0b3e3fca746ce5692c61ecd",
-                "reference": "39c1327fa8c1ade3d0b3e3fca746ce5692c61ecd",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.5.9"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "Douyasi\\WangEditor\\": "src/"
-                },
-                "files": [
-                    "src/helpers.php"
-                ]
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "raoyc",
-                    "email": "raoyc2009@gmail.com"
-                }
-            ],
-            "description": "wangEditor for laravel",
-            "keywords": [
-                "douyasi",
-                "laravel",
-                "wangEditor",
-                "web editor",
-                "wysiwyg"
-            ],
-            "time": "2016-09-04 12:41:09"
         },
         {
             "name": "jakub-onderka/php-console-color",
@@ -832,6 +786,56 @@
                 "random"
             ],
             "time": "2016-03-18 20:34:03"
+        },
+        {
+            "name": "predis/predis",
+            "version": "v1.0.4",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/nrk/predis.git",
+                "reference": "9ead747663bb1b1ae017dfa0d152aca87792b42f"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/nrk/predis/zipball/9ead747663bb1b1ae017dfa0d152aca87792b42f",
+                "reference": "9ead747663bb1b1ae017dfa0d152aca87792b42f",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.2"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "~4.8"
+            },
+            "suggest": {
+                "ext-curl": "Allows access to Webdis when paired with phpiredis",
+                "ext-phpiredis": "Allows faster serialization and deserialization of the Redis protocol"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Predis\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Daniele Alessandri",
+                    "email": "suppakilla@gmail.com",
+                    "homepage": "http://clorophilla.net"
+                }
+            ],
+            "description": "Flexible and feature-complete Redis client for PHP and HHVM",
+            "homepage": "http://github.com/nrk/predis",
+            "keywords": [
+                "nosql",
+                "predis",
+                "redis"
+            ],
+            "time": "2016-05-30 15:25:52"
         },
         {
             "name": "psr/log",
@@ -3270,8 +3274,7 @@
     "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {
-        "zizaco/entrust": 20,
-        "douyasi/laravel-wang-editor": 20
+        "zizaco/entrust": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,
