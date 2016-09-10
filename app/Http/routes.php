@@ -15,7 +15,8 @@ Route::get('/', function () {
 // 后台路由组
 Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware'=>'web'], function () {
     // // 登录
-    Route::any('login', 'AuthController@login')->name('admin.login');
+    Route::get('login', 'AuthController@login')->name('admin.login');
+    Route::post('login', 'AuthController@postLogin');
     // // 注销
     Route::get('logout', 'AuthController@logout')->name('admin.logout');
     // // 已经登录

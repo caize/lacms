@@ -7,16 +7,18 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Auth;
 
-
 use App\User;
 use App\Http\Controllers\Controller;
-
+use App\Http\Requests\UserRequest;
 class AuthController extends Controller
 {    
     /**
-     * 登录
-     * @param Request $request
-     * @return $this
+     *  [管理员登陆]
+     *  izxin.com
+     *  @author qingfeng
+     *  @DateTime 2016-09-10T11:01:41+0800
+     *  @param    Request                  $request [description]
+     *  @return   [type]                            [description]
      */
     public function login(Request $request)
     {
@@ -28,40 +30,59 @@ class AuthController extends Controller
         if ($request->isMethod('get')) {
             return view('admin.auth.login');
         }
-        // 验证表单
-        $validator = Validator::make($request->all(), [
-            'email' => ['required', 'email', 'exists:users'], //查询用户
-            // 'email' => ['required', 'email', 'unique:users'], //创建用户
-            'password' => ['required', 'between:6,16'],
-        ], [
-            'email.exists' => '邮箱不存在',
-            'email.unique' => '邮箱已存在',
-            'email.email' => '邮箱格式不正确',
-            'email.required' => '邮箱为必填项',
-            'password.required' => '密码为必填项',
-            'password.between' => '密码长度必须是6-12',
-        ]);
-        if ($validator->fails()) {
-            return $this->respondWithFailedValidation($validator);
-        }
+        // // 验证表单
+        // $validator = Validator::make($request->all(), [
+        //     'email' => ['required', 'email', 'exists:users'], //查询用户
+        //     // 'email' => ['required', 'email', 'unique:users'], //创建用户
+        //     'password' => ['required', 'between:6,16'],
+        // ], [
+        //     'email.exists' => '邮箱不存在',
+        //     'email.unique' => '邮箱已存在',
+        //     'email.email' => '邮箱格式不正确',
+        //     'email.required' => '邮箱为必填项',
+        //     'password.required' => '密码为必填项',
+        //     'password.between' => '密码长度必须是6-12',
+        // ]);
+        // if ($validator->fails()) {
+        //     return $this->respondWithFailedValidation($validator);
+        // }
         // User::create([
         //     'name' => 'admin',
         //     'email' => $request->input('email'),
         //     'password' => bcrypt($request->input('password')),
         // ]);
-        if (Auth::guard('web')->attempt(['email' => $request->input('email'), 'password' => $request->input('password')])) {
+        // if (Auth::guard('web')->attempt(['email' => $request->input('email'), 'password' => $request->input('password')])) {
+        //     // 认证通过...
+        //     return $this->respondWithSuccess(Auth::user()->toArray(), '登录成功');
+        // }
+        // return $this->respondWithErrors('账号或密码错误',400);
+    }
+    /**
+     *  [postLogin 登陆]
+     *  izxin.com
+     *  @author qingfeng
+     *  @DateTime 2016-09-10T12:02:24+0800
+     *  @param    UserRequest              $request [description]
+     *  @return   [type]                            [description]
+     */
+    public function postLogin(UserRequest $request)
+    {
+        if (Auth::guard('admin')->attempt(['email' => $request->input('email'), 'password' => $request->input('password')])) {
             // 认证通过...
             return $this->respondWithSuccess(Auth::user()->toArray(), '登录成功');
         }
         return $this->respondWithErrors('账号或密码错误',400);
     }
     /**
-     * 退出登录
-     * @return mixed
+     *  [logout description]
+     *  izxin.com
+     *  @author qingfeng
+     *  @DateTime 2016-09-10T11:02:05+0800
+     *  @return   [type]                   [description]
      */
     public function logout()
     {
-        Auth::guard('web')->logout();
+        Auth::guard('admin')->logout();
         return redirect()->route('admin.login');
     }
 }

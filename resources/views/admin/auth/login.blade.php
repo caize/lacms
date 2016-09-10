@@ -69,6 +69,9 @@
                     <div class="m-t-20" v-show="msg">
                         <span v-text="msg"></span>
                     </div>
+                    <div class="m-t-20" v-if="msgData.length > 0">
+                        <p v-text="v.msg" v-for="v in msgData"></p>
+                    </div>
                 </form>
                 </validator>
             </div>
@@ -189,9 +192,9 @@
 	<!-- ================== END vue JS ================== -->
 	<script>
 		$(document).ready(function() {
-			App.init();
-			LoginV2.init();
-		});
+            App.init();
+            LoginV2.init();
+        });
         $('body').keydown(function(e){
             if(e.which == 13){
                 vn.login();
@@ -201,10 +204,12 @@
             el: '#vueLogin',
             data: {
                 user:{_token:"{{csrf_token()}}"},
+                msgData:[],
                 msg:''
             },
             methods: {
                 login:function(){
+                    this.msgData = [];
                     this.$http.post("{{ url('/admin/login') }}",this.user).then(function (response) {
                         if(response.data.code == 400){
                             this.msg = response.data.message
@@ -212,8 +217,15 @@
                         if(response.data.code == 200){
                             window.location.href = "{{ url('/admin') }}";
                         }
-                    }, function (error) {
-                            this.msg = '系统错误';
+                        console.log(response)
+                    }, function (response) {
+                        if(response.status == 422){
+                           for (var key in response.data) {
+                                this.msgData.push({msg:response.data[key][0]})
+                           }
+                        }
+                    }).catch(function(response) {
+                        console.log(response)
                     });
                 }
             }
