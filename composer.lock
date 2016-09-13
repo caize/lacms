@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "c3540933bba48fd4aecd8f0ac59eeb77",
-    "content-hash": "4a74c27d6a4f514de7f83886a0134c33",
+    "hash": "a138b57af2e432c943b2b8309e48018d",
+    "content-hash": "5f30b2fcb656297b76699f95ddda8154",
     "packages": [
         {
             "name": "classpreloader/classpreloader",
@@ -836,6 +836,46 @@
                 "redis"
             ],
             "time": "2016-05-30 15:25:52"
+        },
+        {
+            "name": "prettus/laravel-validation",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/andersao/laravel-validator.git",
+                "reference": "64f66f70d1f291d30370cd255b1c75ac53351d80"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/andersao/laravel-validator/zipball/64f66f70d1f291d30370cd255b1c75ac53351d80",
+                "reference": "64f66f70d1f291d30370cd255b1c75ac53351d80",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/support": "~5.0|~5.1",
+                "illuminate/validation": "~5.0|~5.1",
+                "php": ">=5.4.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Prettus\\Validator\\": "src/Prettus/Validator/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "authors": [
+                {
+                    "name": "Anderson Andrade",
+                    "email": "contato@andersonandra.de"
+                }
+            ],
+            "description": "Laravel Validation Service",
+            "keywords": [
+                "laravel",
+                "service",
+                "validation"
+            ],
+            "time": "2015-08-09 04:11:08"
         },
         {
             "name": "psr/log",
@@ -3274,7 +3314,8 @@
     "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {
-        "zizaco/entrust": 20
+        "zizaco/entrust": 20,
+        "prettus/laravel-validation": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,

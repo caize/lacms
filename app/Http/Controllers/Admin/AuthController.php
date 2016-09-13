@@ -10,8 +10,18 @@ use Illuminate\Support\Facades\Auth;
 use App\User;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\UserRequest;
+
+use App\Validators\AuthValidator;
+use Prettus\Validator\Exceptions\ValidatorException;
+
 class AuthController extends Controller
-{    
+{
+    protected $validator;
+
+    public function __construct(AuthValidator $validator){
+        $this->validator  = $validator;
+    }
+
     /**
      *  [管理员登陆]
      *  izxin.com
@@ -26,7 +36,6 @@ class AuthController extends Controller
         if (Auth::user()) {
             return redirect()->route('admin.index');
         }
-        
         if ($request->isMethod('get')) {
             return view('admin.auth.login');
         }
@@ -65,13 +74,31 @@ class AuthController extends Controller
      *  @param    UserRequest              $request [description]
      *  @return   [type]                            [description]
      */
-    public function postLogin(UserRequest $request)
+     // UserRequest 验证
+    // public function postLogin(UserRequest $request)
+    // {
+    //     if (Auth::guard('admin')->attempt(['email' => $request->input('email'), 'password' => $request->input('password')])) {
+    //         // 认证通过...
+    //         return $this->respondWithSuccess(Auth::user()->toArray(), '登录成功');
+    //     }
+    //     return $this->respondWithErrors('账号或密码错误',400);
+    // }
+    // AuthValidator 验证
+    public function postLogin(Request $request)
     {
-        if (Auth::guard('admin')->attempt(['email' => $request->input('email'), 'password' => $request->input('password')])) {
-            // 认证通过...
-            return $this->respondWithSuccess(Auth::user()->toArray(), '登录成功');
+        try {
+
+            $this->validator->with( $request->all() )->passesOrFail();
+
+            if (Auth::guard('admin')->attempt(['email' => $request->input('email'), 'password' => $request->input('password')])) {
+                // 认证通过...
+                return $this->respondWithSuccess(Auth::user()->toArray(), '登录成功');
+            }
+            return $this->respondWithErrors('账号或密码错误',400);
+
+        } catch (ValidatorException $e) {
+            return $this->respondWithErrors( $e->getMessageBag() , 422);
         }
-        return $this->respondWithErrors('账号或密码错误',400);
     }
     /**
      *  [logout description]

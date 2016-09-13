@@ -217,7 +217,11 @@
                         if(response.data.code == 200){
                             window.location.href = "{{ url('/admin') }}";
                         }
-                        console.log(response)
+                        if(response.data.code == 422){
+                           for (var key in response.data.message) {
+                                this.msgData.push({msg:response.data.message[key][0]})
+                           }
+                        }
                     }, function (response) {
                         if(response.status == 422){
                            for (var key in response.data) {
