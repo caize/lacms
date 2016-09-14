@@ -50,7 +50,7 @@ class Kernel extends HttpKernel
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
 
         // 后台登录
-        'check.admin.login' => \App\Http\Middleware\CheckAdminLogin::class,
+        'admin.auth' => \App\Http\Middleware\AdminAuthMiddleware::class,
 
         // 权限
         'role' => \Zizaco\Entrust\Middleware\EntrustRole::class,

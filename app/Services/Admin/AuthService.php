@@ -16,7 +16,7 @@ class AuthService extends CommonService
     }
     /**
      *  [postLogin 登录]
-     *  臭虫科技
+     *  izxin.com
      *  @author chouchong
      *  @DateTime 2016-09-14T13:38:03+0800
      *  @param    [type]                   $request [description]

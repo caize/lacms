@@ -14,5 +14,4 @@ class BaseController extends Controller
     {
         view()->share('user', auth()->user()->toArray()); // 变量共享
     }
-    
 }

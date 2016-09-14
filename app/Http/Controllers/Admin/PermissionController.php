@@ -4,10 +4,9 @@ namespace App\Http\Controllers\Admin;
 
 
 use Illuminate\Http\Request;
-use App\Http\Requests;
 
-use App\Models\Permission;
 use Cache;
+use Session;
 
 class PermissionController extends BaseController
 {
@@ -22,8 +21,11 @@ class PermissionController extends BaseController
     {
         // return view('admin.permission.index');
         // Cache::forever(config('admin.globals.cache.menuList'),$menuList);
-        Cache::forever('user',auth()->user()->toArray());
-        dd(auth()->user()->toArray());
+        // Cache::forever('user',auth()->user()->toArray());
+        // dd(auth()->user()->toArray());
+        // Session::put('key', auth()->user()->toArray());
+        // dump('ddddd');
+        return view('admin.permission.index');
     }
     /**
      *  [权限节点  添加]
@@ -45,22 +47,7 @@ class PermissionController extends BaseController
      *  @return   [type]                            [description]
      */
     public function store(Request $request)
-    {   
-        // 验证表单
-        $validator = Validator::make($request->all(), [
-            'parent_id' => ['required'], 
-            'name' => ['required'],
-            'display_name' => ['required'],
-            'description' => ['required'],
-            'is_menu' => ['required'],
-            'sort' => ['required'],            
-        ], [
-            'parent_id.required' => '邮箱为必填项',
-            'name.required' => '密码为必填项',
-            'display_name.required' => '密码长度必须是6-12',
-            'description.required' => '密码长度必须是6-12',
-            'is_menu.required' => '密码长度必须是6-12',
-            'sort.required' => '密码长度必须是6-12',
-        ]);
+    {
+        
     }
 }

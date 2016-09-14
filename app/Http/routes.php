@@ -20,7 +20,7 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware'=>'web'],
     // // 注销
     Route::get('logout', 'AuthController@logout')->name('admin.logout');
     // // 已经登录
-    Route::group(['middleware' => ['auth']], function () {
+    Route::group(['middleware' => ['admin.auth']], function () {
         // 后台首页
         Route::get('/', 'AdminController@index')->name('admin.index');
         // 后台权限节点
