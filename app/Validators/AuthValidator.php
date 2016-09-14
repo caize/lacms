@@ -13,6 +13,7 @@ class AuthValidator extends LaravelValidator {
     protected $rules = [
         'email' => ['required', 'email', 'exists:admins'], //查询用户
         // 'email' => ['required', 'email', 'unique:admins'], //创建用户
+        // 'email' => ['required', 'mobile_phone'],
         'password' => ['required', 'between:6,16'],
     ];
     /**
@@ -26,5 +27,6 @@ class AuthValidator extends LaravelValidator {
         'email.required' => '邮箱为必填项',
         'password.required' => '密码为必填项',
         'password.between' => '密码长度必须是6-12',
+        'email.mobile_phone' => '手机号码错误',
 	];
 }
